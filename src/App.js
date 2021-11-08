@@ -1,25 +1,72 @@
-import logo from './logo.svg';
-import './App.css';
+import axios from 'axios';
+import Navbar from './components/layout/Navbar';
+import Sidebar from './components/layout/Sidebar';
+import { Toolbar } from '@mui/material';
+import Product from './components/layout/Product';
+import React from 'react';
+import { Box } from '@mui/system';
+import AppContext from './utils/AppContext';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [contextVariables, setContextVariables] = React.useState({
+		products: [],
+		filteredProducts: [],
+		loadingState: true,
+		sidebarMobile: false,
+		// theme
+	});
+
+	React.useEffect(() => {
+		const getProducts = async () => {
+			try {
+				const response = await axios.get('http://localhost:3000/products');
+
+				setContextVariables({
+					...contextVariables,
+					products: response.data,
+					filteredProducts: response.data,
+					loadingState: false,
+				});
+			} catch (error) {
+				setContextVariables({
+					...contextVariables,
+					products: [],
+					filteredProducts: [],
+					loadingState: false,
+				});
+			}
+		};
+		getProducts();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+	return (
+		<AppContext.Provider value={{ contextVariables, setContextVariables }}>
+			<Navbar />
+			<Box
+				style={{
+					display: 'flex',
+				}}
+			>
+				<Box>
+					<Sidebar />
+				</Box>
+				<Box
+					style={{
+						width: '100%',
+					}}
+					sx={{
+						paddingInline: { sm: '20px' },
+					}}
+				>
+					<h1>Products</h1>
+					<Box>
+						<Product />
+					</Box>
+					<Toolbar />
+				</Box>
+			</Box>
+		</AppContext.Provider>
+	);
 }
 
 export default App;
