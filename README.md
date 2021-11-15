@@ -12,4 +12,4 @@ React JS, Material UI and JSON-Server (for a mock front-end API)
 
 ## Live URL (Firebase)
 
-https://react-filter-by-golden-ogbeka.web.app/
+https://react-filter-app-by-golden.web.app/

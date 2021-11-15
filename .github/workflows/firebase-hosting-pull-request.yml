@@ -13,7 +13,5 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: >-
-            ${{ secrets.FIREBASE_SERVICE_ACCOUNT_REACT_FILTER_BY_GOLDEN_OGBEKA
-            }}
-          projectId: react-filter-by-golden-ogbeka
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_REACT_FILTER_APP_BY_GOLDEN }}'
+          projectId: react-filter-app-by-golden
