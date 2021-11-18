@@ -10,6 +10,6 @@ The app fetches a list of products from a json file and then contains a sidebar 
 
 React JS, Material UI and JSON-Server (for a mock front-end API)
 
-## Live URL (Firebase)
+## App Description
 
-https://react-filter-app-by-golden.web.app/
+This app uses Json Server to act as a sample server for the react application. To start, run npm install, then run npm start
