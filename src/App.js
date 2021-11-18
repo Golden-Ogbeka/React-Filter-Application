@@ -19,7 +19,9 @@ function App() {
 	React.useEffect(() => {
 		const getProducts = async () => {
 			try {
-				const response = await axios.get('http://localhost:3000/products');
+				const response = await axios.get(
+					'https://react-filter-app-by-golden.web.app:3000/products' //instead of localhost
+				);
 
 				setContextVariables({
 					...contextVariables,

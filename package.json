@@ -20,7 +20,7 @@
 		"web-vitals": "^1.0.1"
 	},
 	"scripts": {
-		"json_server": "json-server --watch data/products.json",
+		"json_server": "json-server --watch data/products.json --port 3000",
 		"react_server": "set PORT=3001 && react-scripts start",
 		"start": "npm-run-all --parallel json_server react_server",
 		"build": "react-scripts build",
